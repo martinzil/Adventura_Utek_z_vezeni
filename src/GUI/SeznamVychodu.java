@@ -78,7 +78,7 @@ public class SeznamVychodu extends ListView implements Observer {
                                   
                               
                 dataVychodu.add(polozka);
-                if(!prostor.isVidet() || hra.konecHry()){
+                if(!prostor.isVidet()){
                     dataVychodu.remove(polozka);
                 }
                

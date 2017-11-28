@@ -209,7 +209,7 @@ public class Main extends Application {
         
      /**
      * Metoda nastavuje hru
-     * @param instance hry
+     * @param hra
      */
     public void setHra(IHra hra) {
         this.hra = hra;

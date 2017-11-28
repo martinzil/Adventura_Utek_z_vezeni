@@ -54,17 +54,14 @@ public class Hra implements IHra {
      */
     public String vratEpilog() {
         if (herniPlan.hracVyhral()) {
-            konecHry=true;
             return "Vyhrál jsi. Užívej si svobody!\n";
         }
         
         if (herniPlan.hracChytnut()) {
-            konecHry=true;
             return "Chytil tě hlídač! Příště buď opatrnější.\n";  
         }
         
         if (herniPlan.hracUmrel()) {
-            konecHry=true;
             return "Zakousl tě hlídací pes! Příště si rozmysli kam jdeš.\n";  
         }
         

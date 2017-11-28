@@ -209,7 +209,7 @@ public class HerniPlan implements Subject{
      */
     public boolean hracChytnut() {
         if (aktualniProstor.getNazev().equals("straznice") && !isUspany()) {
-            hracChytnut=true;      
+            hracChytnut=true;
         }
         return hracChytnut; 
     }
