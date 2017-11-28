@@ -7,12 +7,26 @@ package utils;
 
 /**
  *
- * @author Martin
+ * @author Martin Žilinský
  */
 public interface Subject {
+    
+    /**
+     * Registrace observeru.
+     * 
+     * @param observer Observer
+     */
     void registerObserver(Observer observer);
     
+    /**
+     * Zrušení observeru.
+     * 
+     * @param observer Observer
+     */
     void removeObserver(Observer observer);
     
+    /**
+     * Oznámení observeru.
+     */
     void notifyObservers();
 }

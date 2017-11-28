@@ -18,11 +18,12 @@ import logika.IHra;
 import main.Main;
 
 /**
- * Třída SeznamVychodu vytváří seznam názvů sousedních místností. Aktualizuje se
- * při nové hře nebo přejití do jiného prostoru.
+ * Třída VeciKapsa vytváří seznam obrázků věcí v kapse. 
+ * Aktualizuje se při spuštění nové hry, přechodu do jiného prostoru a při sebrání, 
+ * nebo položení věci.
  *
  * @author Martin Žilinský
- * @version ZS 2017
+ * @version 28112017
  */
 public class VeciKapsa extends ListView implements Observer {
 
@@ -32,7 +33,6 @@ public class VeciKapsa extends ListView implements Observer {
 
     /**
     *  Konstruktor třídy
-    *  
     *  @param hra 
     *  @param centralText
     */ 
@@ -47,7 +47,6 @@ public class VeciKapsa extends ListView implements Observer {
 
     /**
      * Restartování adventury
-     *
      * @param hra Nová hra
      */
     public void novaHra(IHra hra) {
@@ -60,8 +59,7 @@ public class VeciKapsa extends ListView implements Observer {
     }
 
     /**
-    *  Update seznamu východů z aktuálního prostoru
-    *  
+    *  Update seznamu věcí v kapse
     */
     @Override
     public void update() {
@@ -72,7 +70,7 @@ public class VeciKapsa extends ListView implements Observer {
             
             String nazev = "/zdroje/" + vec + ".jpg";
             
-            ImageView imageView = new ImageView(new Image(Main.class.getResourceAsStream(nazev), 50, 50, false, false));
+            ImageView imageView = new ImageView(new Image(Main.class.getResourceAsStream(nazev), 100, 100, false, false));
             
 
             imageView.setOnMouseClicked(event -> {
@@ -89,14 +87,14 @@ public class VeciKapsa extends ListView implements Observer {
             }
     }
     /**
-     *  Úvodní nastavení seznamu východů z prostoru
+     *  Úvodní nastavení seznamu věcí v kapse
      */
     private void init() {
         
         seznamVeciVKapse = FXCollections.observableArrayList();
         this.setItems(seznamVeciVKapse);
-        this.setPrefWidth(400);
-        this.setPrefHeight(300);
+        this.setPrefWidth(100);
+        this.setPrefHeight(340);
     }
 
 }

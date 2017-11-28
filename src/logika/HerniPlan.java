@@ -116,10 +116,6 @@ public class HerniPlan implements Subject{
         Vec neospan = new Vec("neospan", "Silné prášky na spaní", true, true, true, false);
 
         // umístíme věci do prostorů
-        zamcenaCela.vlozVec(nuz);
-        tvojeCela.vlozVec(klic);
-        tvojeCela.vlozVec(cigarety);
-        tvojeCela.vlozVec(zapalky);
         tvojeCela.vlozVec(toaletniPapir);
         tvojeCela.vlozVec(zachod);
         tvojeCela.vlozVec(postel);
@@ -205,7 +201,6 @@ public class HerniPlan implements Subject{
         if (aktualniProstor.getNazev().equals(viteznyProstor)) {
             return true;
         }
-        notifyObservers();
         return false;
     }
     
@@ -213,11 +208,9 @@ public class HerniPlan implements Subject{
      * Metoda vrátí true, pokud byl hráč chytnut.
      */
     public boolean hracChytnut() {
-        notifyObservers();
         if (aktualniProstor.getNazev().equals("straznice") && !isUspany()) {
-            hracChytnut=true;
-        } 
-        notifyObservers();
+            hracChytnut=true;      
+        }
         return hracChytnut; 
     }
     
@@ -226,9 +219,8 @@ public class HerniPlan implements Subject{
      */
     public boolean hracUmrel() {
         if (aktualniProstor.getNazev().equals("nadvori")) {
-            hracUmrel=true; 
+            hracUmrel=true;
         }
-        notifyObservers();
         return hracUmrel;
     }
     
@@ -252,15 +244,6 @@ public class HerniPlan implements Subject{
     public boolean isZapaluje() {
         return hori;
     }
-    
-    /**
-     *  Metoda vrací odkaz na vítězný prostor.
-     *
-     *@return     vítězný prostor
-     */
-    
-  
-    
 
     @Override
     public void registerObserver(Observer observer) {

@@ -19,12 +19,12 @@ import logika.IHra;
 import main.Main;
 
 /**
- * Třída VeciVProstoru vytváří seznam obrázků vecí, které jsou v inventáři.
- * Aktualizuje se při nové hře, přejití do jiného prostoru a sebrání/položení
+ * Třída VeciProstor vytváří seznam obrázků vecí, které jsou v inventáři.
+ * Aktualizuje se při spuštění nové hry, přejití do jiného prostoru a sebrání/položení
  * věci.
  *
- * @author Michal Šráček
- * @version ZS 2017
+ * @author Martin Žilinský
+ * @version 28112017
  */
 public class VeciProstor extends ListView implements Observer {
 
@@ -74,7 +74,7 @@ public class VeciProstor extends ListView implements Observer {
 
             String nazev = "/zdroje/" + nazevVeci + ".jpg";
             
-            ImageView imageView = new ImageView(new Image(Main.class.getResourceAsStream(nazev), 50, 50, false, false));
+            ImageView imageView = new ImageView(new Image(Main.class.getResourceAsStream(nazev), 100, 100, false, false));
             
 
             imageView.setOnMouseClicked(event -> {
@@ -99,7 +99,7 @@ public class VeciProstor extends ListView implements Observer {
     private void init() {
         seznamVeciVProstoru = FXCollections.observableArrayList();
         this.setItems(seznamVeciVProstoru);
-        this.setPrefWidth(400);
-        this.setPrefHeight(300);
+        this.setPrefWidth(100);
+        this.setPrefHeight(340);
     }
 }

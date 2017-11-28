@@ -17,11 +17,11 @@ import logika.IHra;
 import logika.Prostor;
 
 /**
- * Třída SeznamVychodu vytváří seznam názvů sousedních místností. Aktualizuje se
- * při nové hře nebo přejití do jiného prostoru.
+ * Třída SeznamVychodu vytváří seznam názvů sousedních místností. 
+ * Aktualizuje se při spuštění nové hry, nebo při přechodu do jiného prostoru.
  *
  * @author Martin Žilinský
- * @version ZS 2017
+ * @version 28112017
  */
 public class SeznamVychodu extends ListView implements Observer {
 
@@ -45,7 +45,6 @@ public class SeznamVychodu extends ListView implements Observer {
 
     /**
      * Restartování adventury
-     *
      * @param hra Nová hra
      */
     public void novaHra(IHra hra) {
@@ -56,13 +55,12 @@ public class SeznamVychodu extends ListView implements Observer {
     }
 
     /**
-    *  Update seznamu východů z aktuálního prostoru
-    *  
+    *  Update seznamu východů z aktuálního prostoru  
     */
     @Override
     public void update() {
         dataVychodu.clear();
-
+        
         for (Prostor prostor : hra.getHerniPlan().getAktualniProstor().getVychody()) {
             FlowPane polozka = new FlowPane();
                 
@@ -79,9 +77,14 @@ public class SeznamVychodu extends ListView implements Observer {
                 polozka.getChildren().add(button);
                                   
                               
-                dataVychodu.add(polozka);              
-            }
+                dataVychodu.add(polozka);
+                if(!prostor.isVidet() || hra.konecHry()){
+                    dataVychodu.remove(polozka);
+                }
+               
+        }
     }
+    
     /**
      *  Úvodní nastavení seznamu východů z prostoru
      */

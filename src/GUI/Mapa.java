@@ -15,8 +15,11 @@ import main.Main;
 import utils.Observer;
 
 /**
- *
- * @author Martin
+ * Třída Mapa vytváří vizuální zobrazení mapy adventury.
+ * Aktualizuje se při spuštění nové hry a při zviditelnění místnosti tunel.
+ * 
+ * @author Martin Žilinský
+ * @version 28112017
  */
 public class Mapa extends AnchorPane implements Observer {
     
@@ -24,17 +27,24 @@ public class Mapa extends AnchorPane implements Observer {
     private Circle tecka;
     private ImageView obrazekImageView;
     
+    /**
+    *  Konstruktor třídy
+    *  @param hra 
+    */
     public Mapa(IHra hra){
         this.hra = hra;
         hra.getHerniPlan().registerObserver(this);
         init();
     }
     
+    /**
+    *  Úvodní nastavení mapy hry
+    */ 
     private void init(){
               
         obrazekImageView = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),468,459,false,true));
         
-        tecka = new Circle(10, Paint.valueOf("red"));
+        tecka = new Circle(10, Paint.valueOf("black"));
         
         // this.setTopAnchor(tecka, 0.0);
         // this.setLeftAnchor(tecka, 0.0);
@@ -43,6 +53,10 @@ public class Mapa extends AnchorPane implements Observer {
         update();
     }
     
+    /**
+     * Restartování adventury
+     * @param hra Nová hra
+     */
     public void novaHra (IHra novaHra){
         hra.getHerniPlan().removeObserver(this);
         hra = novaHra;
@@ -50,6 +64,9 @@ public class Mapa extends AnchorPane implements Observer {
         update();
     }
     
+    /**
+    *  Update mapy hry a pohybu po mapě
+    */
     @Override
     public void update(){
         

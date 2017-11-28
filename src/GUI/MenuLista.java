@@ -21,37 +21,48 @@ import logika.IHra;
 import main.Main;
 
 /**
- *
- * @author Martin
+ * Třída MenuLista vytváří menu adventury.
+ * 
+ * @author Martin Žilinský
+ * @version 28112017
  */
 public class MenuLista extends MenuBar{
     
     private IHra hra;
     private Main main;
     
+    /**
+    *  Konstruktor třídy 
+    *  @param hra 
+    *  @param main
+    */
     public MenuLista(IHra hra, Main main){
         this.hra = hra;
         this.main = main;
         init();
     }
-private void init(){
     
-    Menu novySoubor = new Menu("Adventura");
+    /**
+    *  Nástavení nabídky menu lišty 
+    */
+    private void init(){
     
-    MenuItem napoveda = new Menu("Nápověda");
-    napoveda.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
+        Menu novySoubor = new Menu("Adventura");
     
-    MenuItem novaHra = new MenuItem("Nova hra");
-    novaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
+        MenuItem napoveda = new Menu("Nápověda");
+        napoveda.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
     
-    MenuItem konecHry = new MenuItem("Konec hry");
+        MenuItem novaHra = new MenuItem("Nova hra");
+        novaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
     
-    //, new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/ikona.png")))
+        MenuItem konecHry = new MenuItem("Konec hry");
     
-    novySoubor.getItems().addAll(novaHra, konecHry, napoveda);  
-    this.getMenus().addAll(novySoubor);
+        //, new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/ikona.png")))
     
-    novaHra.setOnAction(new EventHandler<ActionEvent>() {
+        novySoubor.getItems().addAll(novaHra, konecHry, napoveda);  
+        this.getMenus().addAll(novySoubor);
+    
+        novaHra.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
@@ -63,21 +74,21 @@ private void init(){
                 main.getVeciKapsa().novaHra(hra);
                 main.getVeciVProstoru().novaHra(hra);
             }
-    });
+        });
         
     
 
-    konecHry.setOnAction(new EventHandler<ActionEvent>() {
+        konecHry.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
                 System.exit(0);
             }
-    });
+        });
     
     
     
-    napoveda.setOnAction(new EventHandler<ActionEvent>() {
+        napoveda.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
@@ -90,7 +101,6 @@ private void init(){
                 stage.setScene(new Scene(webview, 500, 700));
                 stage.show();
             }
-    });
-        
+        });    
    }
 }

@@ -27,8 +27,8 @@ import logika.*;
 import uiText.TextoveRozhrani;
 
 /**
- *
- * @author Martin
+ * @author Martin Žilinský
+ * @version 28112017
  */
 public class Main extends Application {
     
@@ -42,6 +42,10 @@ public class Main extends Application {
     private VeciKapsa veciKapsa;
     private VeciProstor veciProstor;
     
+    /**
+     * Metoda slouží ke spuštění grafického rozhraní hry
+     * a nastavení základního layoutu
+     */
     @Override
     public void start(Stage primaryStage) {
         
@@ -95,7 +99,7 @@ public class Main extends Application {
         borderPane.setLeft(levyPanel());
         borderPane.setRight(pravyPanel());
         
-        Scene scene = new Scene(borderPane, 1500, 1000);
+        Scene scene = new Scene(borderPane, 1350, 800);
         primaryStage.setTitle("Útěk z vězení");
         
         primaryStage.setScene(scene);
@@ -103,6 +107,9 @@ public class Main extends Application {
         zadejPrikazTextField.requestFocus();
     }   
     
+    /**
+     * Metoda slouží k nastavení levého panelu hry
+     */
     private BorderPane levyPanel(){
              
         BorderPane vychody = new BorderPane();
@@ -118,10 +125,13 @@ public class Main extends Application {
         return levyPanel;
     }
     
+    /**
+     * Metoda slouží k nastavení pravého panelu hry
+     */
     private BorderPane pravyPanel(){
         
         BorderPane veci = new BorderPane();
-        veci.setPrefWidth(400);
+        veci.setPrefWidth(300);
         
             veci.setCenter(veciProstor);
              
@@ -165,59 +175,56 @@ public class Main extends Application {
         }
     } 
     
-    public void novaHra() {
-        hra = new Hra();
-        centralText.setText(hra.vratUvitani());
-        //to same pro vsechny observery
-        mapa.novaHra(hra);
-    }
-    
-        /**
+     /**
      * Vrací odkaz na objekt se seznamem východů
-     *
      * @return seznam východů
      */
     public SeznamVychodu getSeznamVychodu() {
         return seznamVychodu;
     }
     
+    /**
+     * Vrací odkaz na objekt se seznamem věcí v kapse
+     * @return věcí v batohu
+     */
     public VeciKapsa getVeciKapsa() {
         return veciKapsa;
     }
     
+    /**
+     * Vrací odkaz na objekt se seznamem věcí v prostoru
+     * @return věci v prostoru
+     */
     public VeciProstor getVeciVProstoru() {
         return veciProstor;
     }
     
-        public TextArea getCentralText() {
+    /**
+     * Vrací odkaz na pole s textem o průběhu hry
+     * @return pole s průběhem hry
+     */
+    public TextArea getCentralText() {
         return centralText;
     }
         
-            /**
+     /**
      * Metoda nastavuje hru
-     *
      * @param instance hry
      */
     public void setHra(IHra hra) {
         this.hra = hra;
     }  
-        /**
+     
+    /**
      * Vrací odkaz na mapu prostorů
-     *
      * @return mapa
      */
     public Mapa getMapa() {
         return mapa;
     }
+         
     /**
-     * @return the primaryStage
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-        /**
      * Vrací odkaz na primární stage
-     *
      * @return primaryStage
      */
     public Stage getStage() {

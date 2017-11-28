@@ -107,10 +107,6 @@ public class Hra implements IHra {
             if (herniPlan.hracChytnut()) {
                 konecHry=true;
             }
-            if (herniPlan.getAktualniProstor() == herniPlan.getViteznyProstor()  ) {
-                konecHry = true;
-                textKVypsani = textKVypsani + "\n Hurá";
-            }
         }
         else {
             textKVypsani="Nevím co tím myslíš? Tento příkaz neznám. ";
